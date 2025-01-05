@@ -2,8 +2,10 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-size: 18px;
+    font-size: 38px;
+    color: grey;
     font-family: "Papyrus", "COPPERPLATE", "Times New Roman";
+    
 }
 body {
     display: flex;
@@ -14,8 +16,10 @@ body {
     height: 700px;
     width: 550px;
     display: flex;
-    background-color:grey;
+    background-color:#FCF4A3;
     flex-flow: column wrap;
+    border-radius: 18px;
+    /* border: 5px solid lavender; */
 
 }
 
@@ -24,14 +28,14 @@ body {
     width: 500px;
     margin: 20px;
     align-self: center;
-    background-color: lightgreen;
+    background-color: peachpuff;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-
+    border: 5px solid gray;
 }
 .text {
-    font-size: 40px;
+    font-size: 50px;
 }
 
 .interface {
@@ -58,10 +62,12 @@ button.clear {
     height: 20px;
     margin: 0 25px 0 0;
     align-self: flex-end;
+    font-size: 18px;
 }
 button {
     width: 100px;
     height: 100px;
     margin: 5px;
-    
+
+
 }
