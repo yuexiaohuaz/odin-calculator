@@ -1,43 +1,49 @@
 function add(a, b){
-    return a + b;
+    return Number(a) + Number(b);
 }
 function subtract(a, b) {
-    return a - b;
+    return Number(a) - Number(b);
 }
 function multiply(a, b){
-    return a * b;
+    return Number(a) * Number(b);
 }
 function divide(a, b) {
-    return a / b;
+    if (b != 0) {
+        return Number(a) / Number(b);
+    }
+    else {
+        return "Bro what are you doing stop dividing by 0";
+    }
 }
 function operate(equation) {
-    let operations = "+-*/";
-    let numbers = "0123456789.";
-    //breaks the equation down
-    //can call reduce if using mroe than one operation. for now, just 1 operation.
-    let arr = equation.split("");
-    let operation = arr.filter((item) => item.includes(operations));
-    switch (operation[0]) { //ensures that only the first one will be used
-        case "+":
-            return add(firstNum, secondNum);
+    let operations = /[+\-*/]/;
+    let operationIndex = equation.indexOf(equation.match(operations));
+    //splits the string at the opreation index
+    //index 0 is firstNum, index 1 is secondNum.
+    let numbers = equation.split(operations);
+    switch (equation[operationIndex]) { //ensures that only the first one will be used
+        case "+"://could also add Number() around the array but whatever
+            return add(numbers[0], numbers[1]);
         case "-":
-            return subtract(firstNum, secondNum);
+            return subtract(numbers[0], numbers[1]);
         case "*":
-            return multiply(firstNum, secondNum);
+            return multiply(numbers[0], numbers[1]);
         case "/":
-            return divide(firstNum, secondNum);
+            return divide(numbers[0], numbers[1]);
     }
 }
 let equation = "";
-//make it so that once it has been clicked more than once for operation, it cannot be clicked again.
+//makes it so that while the equation will store all the digits, the displayed thing will not show
+//+parseFloat((4).toFixed(2));
 const displayedText = document.querySelector(".text");
 let btns = document.querySelectorAll("button");
 btns = Array.from(btns);
 btns.map((btn) => {
     if (btn.textContent == "=") {
         return btn.addEventListener("click", () => {
-            //operation
-            //maybe add a if (equation.slice(-1) == "."...) do not work?
+            equation = operate(equation).toString();
+            //console.log(equation); //add array in the future to store values? +parseFloat((equation).toFixed);
+            displayedText.textContent = (equation == "NaN")?  "Your result was NaN. Please clear." : +parseFloat((Number(equation)).toFixed(2));;
         });
     } else if (btn.textContent == "C") {
         return btn.addEventListener("click", () => {
