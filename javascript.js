@@ -64,14 +64,53 @@ btns.map((btn) => {
                 displayedText.textContent = equation;
             }
         });
-    }
+    }  
     else {
         return btn.addEventListener("click", () => {
             equation = equation + btn.textContent;
             displayedText.textContent = equation;
         });
     }
+    
 
 });
+document.addEventListener('keydown', (e) => {
+    switch (e.key) {
+      case "0":
+      case "1":
+      case "2":
+      case "3":
+      case "4":
+      case "5":
+      case "6":
+      case "7":
+      case "8":
+      case "9":
+      case "+":
+      case "-":
+      case "*":
+      case "/":
+        equation += e.key;
+        break;
+      case "Backspace":
+          equation = equation.slice(0, -1);
+          break;
+      default:
+          // Do nothing for other keys
+    }
+    displayedText.textContent = equation;
+  });
+/*backspace button
+btn.addEventListener("click", () => {
+    equation = equation.splice(-1);
+    displayedText.textContent = equation;
+}});
+
+*/
+
+
+
+
+
 //pass an array into every function
 //it talked about passing in the content of the divs as the element
