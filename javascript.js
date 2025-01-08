@@ -93,20 +93,12 @@ document.addEventListener('keydown', (e) => {
         equation += e.key;
         break;
       case "Backspace":
-          equation = equation.slice(0, -1);
-          break;
+         equation = e.slice(-1);
       default:
           // Do nothing for other keys
     }
     displayedText.textContent = equation;
   });
-/*backspace button
-btn.addEventListener("click", () => {
-    equation = equation.splice(-1);
-    displayedText.textContent = equation;
-}});
-
-*/
 
 
 
